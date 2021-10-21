@@ -1,0 +1,87 @@
+외부 ip 허용
+
+vi  /etc/mysql/my.cnf -> i키 -> #bind-address = 127.0.0.1 -> :wq
+
+or
+
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+
+-----------------------------------------------------------------------------------------------
+한글 허용
+
+
+[client]    
+
+default-character-set = utf8  
+
+[mysqld]   
+
+character-set-client-handshake = FALSE  
+
+init_connect = "SET collation_connection = utf8_general_ci"  
+
+init_connect = "SET NAMES utf8"  
+
+default-character-set = utf84
+
+character-set-server = utf8  
+
+collation-server = utf8_general_ci  
+
+[mysqldump]    
+
+default-character-set = utf8
+
+[mysql]   
+
+default-character-set=utf8
+
+-----------------------------------------------------------------------------------------
+서비스 mysql 시작 
+
+service mysql start 
+
+-----------------------------------------------------------------------------------------------
+mysql 접속
+
+mysql
+
+----------------------------------------------------------------------------------------------
+mysql 외부 ip 모두 허용 만들기
+
+GRANT ALL PRIVILEGES ON *.* TO '아이디'@'%' IDENTIFIED BY '패스워드';
+FLUSH PRIVILEGES;
+
+---------------------------------------------------------------------------------------------
+
+CREATE TABLE `student_tb` (
+    `sno` int(11) NOT NULL,
+    `name` char(10) DEFAULT NULL,
+    `det` char(20) DEFAULT NULL,
+    `addr` char(80) DEFAULT NULL,
+    `tel` char(20) DEFAULT NULL,
+    PRIMARY KEY (`sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-------------------------------------------------------------------------------------
+사용자 제거 
+DELETE FROM mysql.user WHERE user='' AND host = '';
+
+
+-------------------------------------------------------------------------------
+비밀번호 변경
+
+UPDATE mysql.user SET password=password('1234') WHERE user ='root';
+
+UPDATE mysql.user SET authentication_string=password('1234') WHERE user ='root';
+
+--------------------------------------------------------------------------------
+mysql 전체보기
+
+describe mysql.user;
+
+-------------------------------------------------------------------------------------
+mysql 나가기 
+
+quit
+-------------------------------------------------------------------

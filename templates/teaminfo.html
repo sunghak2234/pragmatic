@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Album example · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {# BOOTSTRAP LINK #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    {% include 'head.html' %}
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<main>
+
+    <hr>
+    <br>
+    <br>
+
+    <div style="margin: 0 3rem; text-align: center; font-weight: bold">
+        <button type="button" class="btn btn-outline-secondary">Team information</button>
+    </div>
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="data:image/jpeg;base64,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"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> leader : 정재훈 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col" style="height: 10rem;">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://postfiles.pstatic.net/MjAyMTEwMTdfMTA5/MDAxNjM0NDAxODI4MDI2.fYmV3xYv4709BachWGKf7DFgiaQYwvr_ZqoKIJUlJ90g.O1aSf9bR8Q-vIRo6ht2g_RrrdSg1YKepPMzkK0h51vkg.JPEG.doch2202/1540778492911.jpg?type=w773"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> memeber : 임성학 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="data:image/jpeg;base64,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"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> memeber : 박주영 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="data:image/jpeg;base64,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"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text">memeber : 이영우 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+    <br>
+    <br>
+
+
+    <div style="margin: 0 auto; text-align: center; font-weight: bold">
+        <button type="button" class="btn btn-outline-secondary">Advicer</button>
+    </div>
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> GIS Principal : 이두희 대표 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> GIS Web Master : 박형석 강사 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> GIS Algorithm Master : 양지웅 강사 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text">GIS Machine-Learning Master : 박준영 강사 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> GIS Deep-Learning Master : 이재화 강사 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> GIS NLP Master : 김유빈 강사 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="border-radius: 1rem; height: 15rem"
+                             src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQUdu%2FbtqvTUJOpaD%2FF6l3qRXedNPB3mGNmmuOY1%2Fimg.png"
+                             alt="">
+
+                        <div class="card-body">
+                            <p class="card-text"> GIS Big-Data Master : 장순용 강사 </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+
+            </div>
+            <br>
+            <br>
+            <hr>
+            <br>
+
+
+</main>
+
+{% include 'footer.html' %}
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

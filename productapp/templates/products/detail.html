@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+
+{% if target_product.file %}
+{% for i in target_product.file %}
+    {{ i }}
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

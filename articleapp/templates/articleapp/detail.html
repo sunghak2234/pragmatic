@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+
+    <div style="text-align: center; max-width: 500px; margin: 4rem auto">
+        <div>
+            <h3 style="font-weight: bold">
+                {{ target_article.title }}
+            </h3>
+            <div style="height: 2rem">
+                <a href="{% url 'likeapp:article_like' pk=target_article.pk %}"> <i
+                        style="vertical-align: middle; font-size: 1.2rem; color: #f77" class="material-icons">
+                    favorite
+                </i>
+                </a>
+                <span style="vertical-align: middle;  font-size: 1.2rem;">{{ target_article.like }}</span>
+            </div>
+
+            <h5>
+                writer : {{ target_article.writer.profile.nickname }}
+            </h5>
+        <br>
+
+            <hr>
+            <img style=" border-radius:1rem; width: 25rem;" src="{{ target_article.image.url }}" alt="">
+        <br>
+                <br>
+            <p>
+                {{ target_article.content }}
+            </p>
+
+            {% if target_article.writer == user %}
+
+                <p>
+                    <a href="{% url 'articleapp:create' %}" class="btn btn-success rounded-pill">
+                        article create
+                    </a>
+                </p>
+
+                <p>
+                    <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-primary rounded-pill">
+                        article update
+                    </a>
+                </p>
+                <p>
+                    <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-danger rounded-pill">
+                        article delete
+                    </a>
+                </p>
+            {% endif %}
+            <hr>
+            <p>
+                <a href="{% url 'articleapp:list' %}" style="width: 20rem; color: #2f6f9f" >
+                    back
+                </a>
+            </p>
+        </div>
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://test1-gqabuqqpcd.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/614d881dd326717cb6831bea/1fi25vvlj';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+{% endblock %}

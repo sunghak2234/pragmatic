@@ -1,0 +1,40 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성자</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if question_list %}
+        {% for question in question_list %}
+            <div style="margin-left: 15rem;">
+
+                <div class="card" style="width: 60rem;">
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'questionapp:detail' pk=question.pk %}">
+                                <span class="badge rounded-pill bg-secondary"> {{ question.created_at }}</span>
+                                {{ question.title | truncatechars:40 }}
+                                <span class="badge bg-info text-dark"
+                                      style="font-size: 0.7rem;">작성자 : {{ question.writer.profile.nickname }}</span>
+                                <span class="badge bg-info text-dark"
+                                      style="font-size: 0.7rem;">hits : {{ question.test_123 }}</span>
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <br>
+
+
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+    </tbody>
+</table>

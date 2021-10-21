@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+    <div style="text-align: center; max-width: 550px; margin:auto ">
+        <br>
+        <br>
+        <h5>
+            {{ target_question.title }}
+        </h5>
+
+        <br>
+        <br>
+
+        <p>삭제된 글은 데이터가 서버에서도 영구 삭제되어 복구가 불가능합니다. </p>
+            <p>아래 제출을 누루면 삭제 됩니다.</p>
+
+        <form action="{% url 'questionapp:delete' pk=target_question.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-12 mt-3">
+        </form>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+<style>
+    h4, h6, a {
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        cursor: pointer;
+        /* 추가하여 텍스트 선택효과 방지 */
+        user-select: none;
+        color: black;
+    }
+
+
+</style>
+
+
+<div class="pragmatic_header_button">
+    <div style="margin-bottom: 2rem;">
+        <a href="{% url 'home' %}">
+            <h1><span style="color: #DC143C">임</span> <span style="color: #FFA500">정</span> <span
+                    style="color: #00BFFF">박</span> <span style="color: brown">이</span>
+                <span style="color: #2F4F4F;">X KODE</span></h1>
+        </a>
+    </div>
+    <a href="{% url 'home' %}" style="margin-right: 1rem;">
+        <span>Main</span>
+    </a>
+
+
+    <a href="{% url 'introapp:intro' %}" style="margin-right: 1rem;">
+        <span>Product</span>
+    </a>
+
+
+    <a href="{% url 'introapp:teaminfo' %}" style="margin-right: 1rem;">
+        <span>Team Info</span>
+    </a>
+
+    <a href=" {% url 'articleapp:list' %}" style="margin-right: 1rem;">
+        <span>Article</span>
+    </a>
+
+    {% if  user.is_authenticated %}
+
+        <a href=" {% url 'projectapp:list' %}" style="margin-right: 1rem;">
+            <span>Comunity</span>
+        </a>
+
+        <a href=" {% url 'subscribapp:list' %}" style="margin-right: 1rem;">
+            <span>Subscription</span>
+        </a>
+    {% endif %}
+
+    <br>
+    <br>
+
+    <a href="{% url 'questionapp:list' %}" style="margin-right: 1rem;">
+        <button type="button" class="btn btn-outline-secondary"> Q & A</button>
+    </a>
+
+    {% if not user.is_authenticated %}
+        <a href="{% url 'accountapp:login' %}?next={{ request.path }}" style="margin-right: 1rem;">
+            <button type="button" class="btn btn-outline-secondary">Log in</button>
+        </a>
+        <a href="{% url 'accountapp:create' %}?next={{ request.path }}" style="margin-right: 1rem;">
+            <button type="button" class="btn btn-outline-secondary">Sign-Up</button>
+
+        </a>
+    {% else %}
+        <a href=" {% url 'accountapp:logout' %}?next={{ request.path }}" style="margin-right: 1rem;">
+            <button type="button" class="btn btn-outline-secondary">Logout</button>
+        </a>
+
+        <a href=" {% url 'accountapp:detail' pk=user.pk %}" style="margin-right: 1rem;">
+            <button type="button" class="btn btn-outline-secondary">my Page</button>
+        </a>
+
+    {% endif %}
+
+
+</div>
+
+
+
+</div>

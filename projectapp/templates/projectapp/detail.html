@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+    <div>
+        <div style="text-align: center; max-width: 400px; margin: 2rem auto" >
+            <img src="{{ target_project.image.url }}"
+                 style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit: cover;" >
+
+            <h5>
+                {{ target_project.title }}
+            </h5>
+
+        </div>
+
+        <div class="text-center" >
+            {% if not subscription %}
+            <a href="{% url 'subscribapp:subscribe' %}?project_pk={{ target_project.pk }}" class="btn btn-primary rounded-pill px-4" style="margin: 1rem auto 2rem;">
+                구독 가능합니다.
+            </a>
+            {% else %}
+             <a href="{% url 'subscribapp:subscribe' %}?project_pk={{ target_project.pk }}" class="btn btn-dark rounded-pill px-4" style="margin: 1rem auto 2rem;">
+                구독 중입니다.
+            </a>
+            {% endif %}
+        </div>
+        <div>
+            {% include 'snippets/list_pragmatic.html' with article_list=object_list %}
+        </div>
+
+    </div>
+{% endblock %}

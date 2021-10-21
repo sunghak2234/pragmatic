@@ -1,0 +1,20 @@
+<style>
+    h4, h6, a {
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        cursor: pointer;
+        /* 추가하여 텍스트 선택효과 방지 */
+        user-select: none;
+        color: black;
+    }
+</style>
+
+<div style="display: block;" >
+    <img style="height: 7rem; width: 10rem; " src="{{ project.image.url }}" >
+    <h6 style="text-overflow: ellipsis; font-weight: bold; font-size: 1rem" class="mt-2">
+        {{ project.title  | truncatechars:13}}
+    </h6>
+</div>

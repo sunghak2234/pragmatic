@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+    <div style="text-align: center; max-width: 300px; margin:auto ">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3>
+            계정 삭제
+        </h3>
+        <br>
+        <br>
+        <p> "There is nothing noble in being superior to your fellow man;</p>
+        <p>true nobility is being superior to your former self.”</p>
+        <p>- Ernest Hemingway - </p>
+
+
+
+
+        <br>
+        <br>
+        <form action="{% url 'accountapp:delete' pk=target_user.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-12 mt-3">
+            <br>
+            <br>
+        </form>
+
+    </div>
+
+{% endblock %}

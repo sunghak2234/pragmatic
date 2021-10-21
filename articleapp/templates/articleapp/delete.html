@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+    <div style="text-align: center; max-width: 300px; margin:auto ">
+
+         <h3>
+           Delete Article : {{ target_article.title }}
+         </h3>
+
+        <form action="{% url 'articleapp:delete' pk=target_article.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-12 mt-3">
+        </form>
+
+    </div>
+
+{% endblock %}

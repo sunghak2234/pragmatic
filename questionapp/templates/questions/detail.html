@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block contents %}
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <br>
+    <h5 class="card-title" style=" text-align: center; font-weight: bold">
+        {{ target_question.title }}</h5>
+    <br>
+
+
+
+    <div style="text-align: center;  margin-left:27.5rem; ">
+
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ target_question.content }}
+                </p>
+                {% if target_question.image %}
+
+                    <a href="{{ target_question.image.url }}" class="btn btn-outline-dark" role="button">
+                           <i class="material-icons" style="margin-right: 2rem; vertical-align: middle">
+                        cloud_upload
+                    </i> DownLoad</a>
+                {% endif %}
+                <hr>
+                <a href="{% url 'questionapp:create' %}" class="card-link">Create</a>
+                <a href="{% url 'questionapp:delete' pk=target_question.pk %}" class="card-link" style="color: darkred">Delete</a>
+            </div>
+        </div>
+
+
+    </div>
+    <br>
+    <div style="text-align: center">
+        <a href="{% url 'questionapp:list' %}" class="btn btn-primary rounded-pill mt-3">
+            Question List로 가기
+        </a>
+    </div>
+    <div id="disqus_thread"></div>
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://test1-gqabuqqpcd.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block contents %}
+
+    <div style="text-align: center; margin: 3rem 0; ">
+        <h2 style="font-family: 'Quicksand', sans-serif;"> Q & A </h2>
+    </div>
+    <table class="table" style=" width: 50rem; margin:auto auto 5rem auto; text-align: center">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>title</th>
+            <th>writer</th>
+            <th>file</th>
+            <th>hit</th>
+            <th>date</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% if question_list %}
+            {% for question in question_list %}
+                <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a href="{% url 'questionapp:detail' pk=question.pk %}"> {{ question.title | truncatechars:40 }}  </a>
+                </td>
+                <td> {{ question.writer.profile.nickname }} </td>
+
+                <td> {% if question.image %}
+                    <i class="material-icons">
+                        cloud_upload
+                    </i>
+                {% endif %}
+                </td>
+                <td>  {{ question.test_123 }} </td>
+                <td><p style="font-size: 0.7rem; padding: 0.3rem"> {{ question.created_at }} </p></td>
+
+
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+
+    <div style="text-align: center">
+        <a href="{% url 'questionapp:create' %}" class="btn btn-success rounded-pill mt-3">
+            질문 남기기
+        </a>
+
+    </div>
+
+{% endblock %}

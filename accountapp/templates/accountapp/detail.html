@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+
+    <style>
+
+        .container {
+            padding: 0;
+            margin: auto;
+        }
+
+        .container div {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 1rem;
+        }
+
+        .container a {
+            width: 45%;
+            max-width: 250px;
+        }
+
+        .container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+
+        }
+
+        .container .item1 {
+            height: 200px;
+        }
+
+        .container .item4 {
+            height: 800px;
+        }
+
+        .container .item6 {
+            height: 600px;
+        }
+
+        .container .item11 {
+            height: 400px;
+        }
+
+
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div style="text-align: center; margin: 4rem auto">
+        <div>
+
+            {% if target_user.profile %}
+                <img src="{{ target_user.profile.image.url }}" alt=""
+                     style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit: cover;"
+                >
+                <div>
+                    <h2 style="margin-left: 0; padding-left: 43rem; text-align: left">
+                        <span class="material-icons">fingerprint</span>
+                        : {{ target_user.profile.nickname }}
+                    </h2>
+                    <h5  style="margin-left: 0; padding-left: 43rem; text-align: left; font-size: 1rem;">
+                        <span class="material-icons" style="margin-right: 0.5rem">edit_note</span>
+                        : {{ target_user.profile.message }}
+                    </h5>
+                </div>
+
+                <hr>
+                {% if target_user == user %}
+
+                    <a href="{% url 'articleapp:create' %}" class="btn btn-success rounded-pill"
+                       style="margin-right: 2rem;">
+                        article create
+                    </a>
+
+
+                    <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
+                       class="btn btn-primary rounded-pill" style="margin-right: 2rem;">
+                        profile update
+                    </a>
+
+                {% endif %}
+            {% else %}
+
+                {% if target_user == user %}
+
+                    <a href="{% url 'profileapp:create' %}" class="btn btn-dark rounded-pill"
+                       style="margin-right: 2rem;">
+                        profile create
+                    </a>
+
+
+
+                {% endif %}
+
+
+            {% endif %}
+
+            {% if target_user == user %}
+
+
+
+                <a href="{% url 'accountapp:update' pk=user.pk %}" class="btn btn-dark rounded-pill"
+                   style="margin-right: 2rem;">
+                    <span>account update </span>
+                </a>
+
+
+
+                <a href=" {% url 'accountapp:delete' pk=user.pk %}" class="btn btn-danger rounded-pill">
+                    <span>
+                        delete
+                    </span>
+                </a>
+                <br>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+
+    <div>
+        {% include 'snippets/List_pragmatic.html' with article_list=object_list %}
+    </div>
+{% endblock %}

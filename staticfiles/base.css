@@ -1,0 +1,27 @@
+.pragmatic_footer_button {
+    text-align: center;
+    margin-top: 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.pragmatic_header_button {
+    text-align: center;
+    margin: 2rem 0;
+    font-family: 'Anton', sans-serif;
+}
+
+.pragmatic_footer_logo {
+    margin-top: 0.1rem;
+    font-weight: bold;
+}
+
+input:focus {
+    background-color: black;
+    color: white;
+}
+
+@media screen and (max-width: 500px) {
+    html {
+        font-size: 13px;
+    }
+}
