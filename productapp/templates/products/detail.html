@@ -2,10 +2,32 @@
 {% block contents %}
 
 
-{% if target_product.file %}
-{% for i in target_product.file %}
-    {{ i }}
-    {% endfor %}
-{% endif %}
+    {% if target_product.file %}
+        {#{% for i in target_product.file %}#}
+        {#    {{ i }}#}
+        {#    {% endfor %}#}
+        <div style="margin-left: 34rem;">
+            <img src="{{ target_product.file.url }}" alt="">
+        </div>
+        {#    <video src="{{ target_product.file.url }}"></video>#}
+        {#    <video autoplay controls loop>#}
+        {#        <source src="{{ target_product.file.url }}" type="video/mp4">#}
+        {#    </video>#}
+        {#    {{ target_product.file.url }}#}
+    {% endif %}
+    <div style="margin-left: 4rem; margin-right: 4rem;">
+        <br>
+        <hr>
+        <br>
+        <h6 style="font-weight: bold">이미지에서 텍스트 추출 </h6>
+        <br>
+        {{ target_product.tesseract }}
+
+        <hr>
+        <hr>
+        <h6 style="font-weight: bold"> 번역 </h6>
+        {{ target_product.api }}
+    </div>
+
 
 {% endblock %}
